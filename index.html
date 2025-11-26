@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ink & Sound - Tu comunidad cultural para compartir libros, música y arte">
+    <meta name="keywords" content="libros, música, arte, reseñas, comunidad cultural">
     <title>Ink & Sound - Tu comunidad cultural</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="theme-dark">
     <!-- Theme Selector -->
     <div class="theme-selector">
-        <div class="theme-option theme-dark active" data-theme="dark"></div>
-        <div class="theme-option theme-light-option" data-theme="light"></div>
-        <div class="theme-option theme-blue-option" data-theme="blue"></div>
-        <div class="theme-option theme-green-option" data-theme="green"></div>
+        <div class="theme-option theme-dark active" data-theme="dark" title="Tema Oscuro"></div>
+        <div class="theme-option theme-light-option" data-theme="light" title="Tema Claro"></div>
+        <div class="theme-option theme-blue-option" data-theme="blue" title="Tema Azul"></div>
+        <div class="theme-option theme-green-option" data-theme="green" title="Tema Verde"></div>
     </div>
 
     <!-- Header -->
@@ -25,15 +30,15 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#" class="active">Inicio</a></li>
-                    <li><a href="#">Libros</a></li>
-                    <li><a href="#">Música</a></li>
-                    <li><a href="#">Arte</a></li>
-                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#books">Libros</a></li>
+                    <li><a href="#music">Música</a></li>
+                    <li><a href="#art">Arte</a></li>
+                    <li><a href="#community">Comunidad</a></li>
                 </ul>
                 <div class="user-actions">
                     <div class="search-container">
-                        <input type="text" placeholder="Buscar arte, música, libros...">
-                        <button><i class="fas fa-search"></i></button>
+                        <input type="text" placeholder="Buscar arte, música, libros..." aria-label="Buscar contenido">
+                        <button aria-label="Buscar"><i class="fas fa-search"></i></button>
                     </div>
                     <button class="btn btn-outline" id="loginBtn">Iniciar Sesión</button>
                     <button class="btn" id="registerBtn">Registrarse</button>
@@ -48,8 +53,8 @@
             <h1>Ink & Sound</h1>
             <p>Donde las palabras encuentran su melodía y cada nota cuenta una historia</p>
             <div class="cta-buttons">
-                <a href="#" class="btn">Comenzar Ahora</a>
-                <a href="#" class="btn btn-outline">Explorar</a>
+                <a href="#review-form" class="btn">Comenzar Ahora</a>
+                <a href="#recent" class="btn btn-outline">Explorar</a>
             </div>
         </div>
     </section>
@@ -68,21 +73,21 @@
                 </div>
 
                 <!-- Review Form -->
-                <div class="review-form">
-                    <h3>Comparte tu experiencia</h3>
+                <div class="review-form" id="review-form">
+                    <h3><i class="fas fa-edit"></i> Comparte tu experiencia</h3>
                     <form id="reviewForm">
                         <div class="form-group">
                             <label for="itemSelect">¿Qué estás compartiendo?</label>
-                            <select id="itemSelect" class="form-control">
+                            <select id="itemSelect" class="form-control" required>
                                 <option value="">Selecciona un tipo</option>
-                                <option value="book">Libro</option>
-                                <option value="music">Música</option>
-                                <option value="art">Arte</option>
+                                <option value="book">📚 Libro</option>
+                                <option value="music">🎵 Música</option>
+                                <option value="art">🎨 Arte</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="itemTitle">Título</label>
-                            <input type="text" id="itemTitle" class="form-control" placeholder="Ej: Cien años de soledad">
+                            <input type="text" id="itemTitle" class="form-control" placeholder="Ej: Cien años de soledad" required>
                         </div>
                         <div class="form-group">
                             <label>Tu calificación</label>
@@ -96,9 +101,11 @@
                         </div>
                         <div class="form-group">
                             <label for="reviewText">Reseña</label>
-                            <textarea id="reviewText" class="form-control" placeholder="Comparte tus pensamientos..."></textarea>
+                            <textarea id="reviewText" class="form-control" placeholder="Comparte tus pensamientos..." required></textarea>
                         </div>
-                        <button type="submit" class="btn">Publicar Reseña</button>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Publicar Reseña
+                        </button>
                     </form>
                 </div>
 
@@ -113,7 +120,7 @@
                 <div class="tab-content active" id="recent">
                     <div class="section">
                         <div class="section-header">
-                            <h2 class="section-title">Actividad Reciente</h2>
+                            <h2 class="section-title"><i class="fas fa-clock"></i> Actividad Reciente</h2>
                             <a href="#" class="view-all">Ver todo <i class="fas fa-chevron-right"></i></a>
                         </div>
                         <div id="activityFeed">
@@ -126,7 +133,7 @@
                 <div class="tab-content" id="popular">
                     <div class="section">
                         <div class="section-header">
-                            <h2 class="section-title">Libros Populares</h2>
+                            <h2 class="section-title"><i class="fas fa-fire"></i> Libros Populares</h2>
                             <a href="#" class="view-all">Ver todos <i class="fas fa-chevron-right"></i></a>
                         </div>
                         <div class="cards-grid" id="popularBooks">
@@ -139,7 +146,7 @@
                 <div class="tab-content" id="friends">
                     <div class="section">
                         <div class="section-header">
-                            <h2 class="section-title">Actividad de Amigos</h2>
+                            <h2 class="section-title"><i class="fas fa-users"></i> Actividad de Amigos</h2>
                             <a href="#" class="view-all">Ver todos <i class="fas fa-chevron-right"></i></a>
                         </div>
                         <div id="friendsActivity">
@@ -152,7 +159,7 @@
             <div class="sidebar">
                 <!-- User Stats -->
                 <div class="section">
-                    <h3>Tu Actividad</h3>
+                    <h3><i class="fas fa-chart-line"></i> Tu Actividad</h3>
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="reviewsCount">12</div>
@@ -172,7 +179,7 @@
                 <!-- Recommendations -->
                 <div class="section">
                     <div class="section-header">
-                        <h3 class="section-title">Recomendaciones</h3>
+                        <h3 class="section-title"><i class="fas fa-star"></i> Recomendaciones</h3>
                     </div>
                     <div id="recommendations">
                         <!-- Recommendations will be loaded here -->
@@ -181,7 +188,7 @@
 
                 <!-- Community Stats -->
                 <div class="section">
-                    <h3>Estadísticas de la Comunidad</h3>
+                    <h3><i class="fas fa-globe"></i> Estadísticas de la Comunidad</h3>
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="communityUsers">5,243</div>
@@ -204,35 +211,45 @@
                 <div class="footer-column">
                     <h3>Ink & Sound</h3>
                     <p>Donde las palabras encuentran su melodía y cada nota cuenta una historia.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: var(--primary); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--primary); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: var(--primary); margin-right: 15px; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--primary); font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Enlaces rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Libros</a></li>
-                        <li><a href="#">Música</a></li>
-                        <li><a href="#">Arte</a></li>
+                        <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#books"><i class="fas fa-book"></i> Libros</a></li>
+                        <li><a href="#music"><i class="fas fa-music"></i> Música</a></li>
+                        <li><a href="#art"><i class="fas fa-palette"></i> Arte</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Recursos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Preguntas frecuentes</a></li>
-                        <li><a href="#">Soporte</a></li>
-                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Preguntas frecuentes</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Soporte</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Términos y condiciones</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@inkandsound.com">info@inkandsound.com</a></li>
-                        <li><a href="#">Síguenos en redes sociales</a></li>
+                        <li><a href="mailto:info@inkandsound.com"><i class="fas fa-envelope"></i> info@inkandsound.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +54 11 1234-5678</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Ink & Sound. Todos los derechos reservados.</p>
+                <p>&copy; 2024 Ink & Sound. Todos los derechos reservados. | 
+                    <a href="#" style="color: var(--primary);">Política de Privacidad</a> | 
+                    <a href="#" style="color: var(--primary);">Términos de Uso</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -240,18 +257,43 @@
     <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Iniciar Sesión</h2>
+            <span class="close-modal" aria-label="Cerrar">&times;</span>
+            <h2><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h2>
+            
+            <!-- Alert container -->
+            <div id="loginAlert"></div>
+            
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Correo electrónico</label>
-                    <input type="email" id="loginEmail" class="form-control" required>
+                    <label for="loginUsernameEmail"><i class="fas fa-user"></i> Usuario o Email</label>
+                    <input type="text" id="loginUsernameEmail" class="form-control" required placeholder="usuario o tu@email.com">
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword">Contraseña</label>
-                    <input type="password" id="loginPassword" class="form-control" required>
+                    <label for="loginPassword"><i class="fas fa-lock"></i> Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-control" required placeholder="••••••••">
                 </div>
-                <button type="submit" class="btn">Iniciar Sesión</button>
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="display: flex; align-items: center; margin: 0;">
+                        <input type="checkbox" id="loginRemember" style="margin-right: 5px;">
+                        <span style="font-size: 0.9rem;">Recordarme</span>
+                    </label>
+                    <a href="#" style="color: var(--primary); font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;" id="loginSubmitBtn">
+                    <i class="fas fa-sign-in-alt"></i> <span>Iniciar Sesión</span>
+                </button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-muted);">
+                    ¿No tienes cuenta? <a href="#" style="color: var(--primary);" id="switchToRegister">Regístrate aquí</a>
+                </p>
+                <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 8px;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;"><strong>Usuarios de prueba:</strong></p>
+                    <button type="button" class="btn btn-outline quick-login" data-username="admin" data-password="password123" style="width: 100%; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                        👤 admin / password123
+                    </button>
+                    <button type="button" class="btn btn-outline quick-login" data-username="maria_gonzalez" data-password="password123" style="width: 100%; font-size: 0.85rem;">
+                        👤 maria_gonzalez / password123
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -259,284 +301,54 @@
     <!-- Register Modal -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Registrarse</h2>
+            <span class="close-modal" aria-label="Cerrar">&times;</span>
+            <h2><i class="fas fa-user-plus"></i> Registrarse</h2>
+            
+            <!-- Alert container -->
+            <div id="registerAlert"></div>
+            
             <form id="registerForm">
                 <div class="form-group">
-                    <label for="registerName">Nombre completo</label>
-                    <input type="text" id="registerName" class="form-control" required>
+                    <label for="registerName"><i class="fas fa-user"></i> Nombre completo</label>
+                    <input type="text" id="registerName" class="form-control" required placeholder="Juan Pérez">
                 </div>
                 <div class="form-group">
-                    <label for="registerEmail">Correo electrónico</label>
-                    <input type="email" id="registerEmail" class="form-control" required>
+                    <label for="registerUsername"><i class="fas fa-at"></i> Nombre de usuario</label>
+                    <input type="text" id="registerUsername" class="form-control" required placeholder="juanperez" pattern="[a-zA-Z0-9_]{3,50}">
+                    <small style="color: var(--text-muted); font-size: 0.85rem;">Solo letras, números y guiones bajos (mínimo 3 caracteres)</small>
+                    <small id="registerUsernameError" style="color: #E74C3C; font-size: 0.85rem; display: none;"></small>
                 </div>
                 <div class="form-group">
-                    <label for="registerPassword">Contraseña</label>
-                    <input type="password" id="registerPassword" class="form-control" required>
+                    <label for="registerEmail"><i class="fas fa-envelope"></i> Correo electrónico</label>
+                    <input type="email" id="registerEmail" class="form-control" required placeholder="tu@email.com">
+                    <small id="registerEmailError" style="color: #E74C3C; font-size: 0.85rem; display: none;"></small>
                 </div>
                 <div class="form-group">
-                    <label for="registerInterests">Tus intereses</label>
+                    <label for="registerPassword"><i class="fas fa-lock"></i> Contraseña</label>
+                    <input type="password" id="registerPassword" class="form-control" required placeholder="••••••••" minlength="6">
+                    <small style="color: var(--text-muted); font-size: 0.85rem;">Mínimo 6 caracteres</small>
+                    <small id="registerPasswordError" style="color: #E74C3C; font-size: 0.85rem; display: none;"></small>
+                </div>
+                <div class="form-group">
+                    <label for="registerInterests"><i class="fas fa-heart"></i> Tus intereses</label>
                     <input type="text" id="registerInterests" class="form-control" placeholder="Libros, música, arte...">
                 </div>
-                <button type="submit" class="btn">Crear Cuenta</button>
+                <button type="submit" class="btn" style="width: 100%;" id="registerSubmitBtn">
+                    <i class="fas fa-user-plus"></i> <span>Crear Cuenta</span>
+                </button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-muted);">
+                    ¿Ya tienes cuenta? <a href="#" style="color: var(--primary);" id="switchToLogin">Inicia sesión</a>
+                </p>
             </form>
         </div>
     </div>
 
-    <script>
-        // Sample data - In a real app, this would come from an API
-        const sampleBooks = [
-            { id: 1, title: "Cien años de soledad", author: "Gabriel García Márquez", rating: 4.5, cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
-            { id: 2, title: "1984", author: "George Orwell", rating: 4.7, cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
-            { id: 3, title: "El principito", author: "Antoine de Saint-Exupéry", rating: 4.8, cover: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
-            { id: 4, title: "Don Quijote", author: "Miguel de Cervantes", rating: 4.3, cover: "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" },
-            { id: 5, title: "Harry Potter", author: "J.K. Rowling", rating: 4.9, cover: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" }
-        ];
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
 
-        const sampleActivity = [
-            { user: "María González", action: "calificó", item: "Cien años de soledad", rating: 5, time: "Hace 2 horas" },
-            { user: "Carlos López", action: "reseñó", item: "Bohemian Rhapsody", rating: 4, time: "Hace 5 horas" },
-            { user: "Ana Martínez", action: "agregó", item: "La noche estrellada a su colección", time: "Hace 1 día" },
-            { user: "David Rodríguez", action: "comentó en", item: "tu reseña de 1984", time: "Hace 2 días" }
-        ];
-
-        // DOM Elements
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const loginModal = document.getElementById('loginModal');
-        const registerModal = document.getElementById('registerModal');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const stars = document.querySelectorAll('.star');
-        const reviewForm = document.getElementById('reviewForm');
-        const activityFeed = document.getElementById('activityFeed');
-        const popularBooks = document.getElementById('popularBooks');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const categoryTags = document.querySelectorAll('.category-tag');
-        const themeOptions = document.querySelectorAll('.theme-option');
-
-        // Theme switching functionality
-        themeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const theme = option.getAttribute('data-theme');
-                
-                // Remove all theme classes
-                document.body.classList.remove('theme-dark', 'theme-light', 'theme-blue', 'theme-green');
-                
-                // Add selected theme class
-                document.body.classList.add(`theme-${theme}`);
-                
-                // Update active theme indicator
-                themeOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-                
-                // Save theme preference to localStorage
-                localStorage.setItem('ink-sound-theme', theme);
-            });
-        });
-
-        // Load saved theme from localStorage
-        const savedTheme = localStorage.getItem('ink-sound-theme') || 'dark';
-        document.body.classList.add(`theme-${savedTheme}`);
-        themeOptions.forEach(option => {
-            if (option.getAttribute('data-theme') === savedTheme) {
-                option.classList.add('active');
-            }
-        });
-
-        // Event Listeners
-        loginBtn.addEventListener('click', () => openModal(loginModal));
-        registerBtn.addEventListener('click', () => openModal(registerModal));
-
-        closeModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                loginModal.style.display = 'none';
-                registerModal.style.display = 'none';
-            });
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) loginModal.style.display = 'none';
-            if (e.target === registerModal) registerModal.style.display = 'none';
-        });
-
-        // Tab functionality
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                
-                // Update active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Show active content
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === tabId) {
-                        content.classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // Category tags functionality
-        categoryTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                categoryTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-            });
-        });
-
-        // Star rating functionality
-        let currentRating = 0;
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                currentRating = parseInt(star.getAttribute('data-rating'));
-                updateStars(currentRating);
-            });
-            
-            star.addEventListener('mouseover', () => {
-                const rating = parseInt(star.getAttribute('data-rating'));
-                updateStars(rating, false);
-            });
-        });
-
-        // Reset stars on mouseout from rating container
-        document.querySelector('.rating-stars').addEventListener('mouseout', () => {
-            updateStars(currentRating);
-        });
-
-        function updateStars(rating, permanent = true) {
-            stars.forEach(star => {
-                const starRating = parseInt(star.getAttribute('data-rating'));
-                if (starRating <= rating) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
-            
-            if (permanent) {
-                currentRating = rating;
-            }
-        }
-
-        // Form submissions
-        reviewForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const itemType = document.getElementById('itemSelect').value;
-            const itemTitle = document.getElementById('itemTitle').value;
-            const reviewText = document.getElementById('reviewText').value;
-            
-            if (!itemType || !itemTitle || !reviewText || currentRating === 0) {
-                alert('Por favor, completa todos los campos y selecciona una calificación.');
-                return;
-            }
-            
-            // In a real app, you would send this data to an API
-            alert('¡Reseña publicada con éxito!');
-            reviewForm.reset();
-            updateStars(0);
-            
-            // Add to activity feed
-            addActivityItem('Tú', 'reseñó', itemTitle, currentRating, 'Ahora mismo');
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real app, you would authenticate with an API
-            alert('Inicio de sesión exitoso (simulado)');
-            loginModal.style.display = 'none';
-        });
-
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real app, you would register with an API
-            alert('Registro exitoso (simulado)');
-            registerModal.style.display = 'none';
-        });
-
-        // Helper functions
-        function openModal(modal) {
-            modal.style.display = 'flex';
-        }
-
-        function addActivityItem(user, action, item, rating, time) {
-            const activityItem = document.createElement('div');
-            activityItem.className = 'activity-item';
-            
-            const avatar = document.createElement('div');
-            avatar.className = 'activity-avatar';
-            avatar.textContent = user.charAt(0);
-            
-            const content = document.createElement('div');
-            content.className = 'activity-content';
-            
-            const actionText = document.createElement('div');
-            actionText.innerHTML = `<span class="activity-user">${user}</span> <span class="activity-action">${action}</span> <span class="activity-item-title">${item}</span>`;
-            
-            const timeElement = document.createElement('div');
-            timeElement.className = 'activity-time';
-            timeElement.textContent = time;
-            
-            content.appendChild(actionText);
-            if (rating) {
-                const ratingElement = document.createElement('div');
-                ratingElement.className = 'card-rating';
-                ratingElement.innerHTML = '★'.repeat(rating) + '☆'.repeat(5-rating);
-                content.appendChild(ratingElement);
-            }
-            content.appendChild(timeElement);
-            
-            activityItem.appendChild(avatar);
-            activityItem.appendChild(content);
-            
-            activityFeed.insertBefore(activityItem, activityFeed.firstChild);
-        }
-
-        function renderBooks(books, container) {
-            container.innerHTML = '';
-            books.forEach(book => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                
-                card.innerHTML = `
-                    <img src="${book.cover}" alt="${book.title}" class="card-img">
-                    <div class="card-content">
-                        <div class="card-title">${book.title}</div>
-                        <div class="card-meta">${book.author}</div>
-                        <div class="card-rating">${'★'.repeat(Math.floor(book.rating))}${book.rating % 1 >= 0.5 ? '½' : ''}${'☆'.repeat(5 - Math.ceil(book.rating))} ${book.rating}</div>
-                        <div class="card-actions">
-                            <button class="card-btn"><i class="far fa-heart"></i></button>
-                            <button class="card-btn"><i class="far fa-comment"></i></button>
-                            <button class="card-btn"><i class="far fa-bookmark"></i></button>
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
-        }
-
-        // Initialize the page
-        function init() {
-            // Load sample activity
-            sampleActivity.forEach(activity => {
-                addActivityItem(activity.user, activity.action, activity.item, activity.rating, activity.time);
-            });
-            
-            // Load popular books
-            renderBooks(sampleBooks, popularBooks);
-            
-            // Load recommendations (using same books for demo)
-            renderBooks(sampleBooks.slice(0, 3), document.getElementById('recommendations'));
-        }
-
-        // Run initialization when page loads
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+    <!-- Scripts -->
+    <script src="assets/js/api-service.js"></script>
+    <script src="assets/js/auth-index.js"></script>
+    <script src="assets/js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Ink & Sound</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body class="theme-dark auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-pen-nib"></i>
+                    <h1>Ink & Sound</h1>
+                </div>
+                <p class="auth-subtitle">Bienvenido de vuelta</p>
+            </div>
+
+            <!-- Alert container -->
+            <div id="alert-container"></div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username_email">
+                        <i class="fas fa-user"></i> Usuario o Email
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username_email" 
+                        name="username_email" 
+                        class="form-control" 
+                        placeholder="usuario o email@ejemplo.com"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Contraseña
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="••••••••"
+                        required
+                    >
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Recordarme</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> <span>Iniciar Sesión</span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+                <p><a href="forgot-password.html">¿Olvidaste tu contraseña?</a></p>
+            </div>
+
+            <div class="auth-demo">
+                <p><strong>Usuarios de prueba:</strong></p>
+                <p>admin / password123</p>
+                <p>maria_gonzalez / password123</p>
+            </div>
+        </div>
+
+        <div class="auth-background">
+            <div class="auth-bg-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <script src="assets/js/api-service.js"></script>
+    <script>
+        // Toast notification system
+        function showToast(message, type = 'success') {
+            const container = document.querySelector('.toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const icon = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+            toast.innerHTML = `
+                <span class="toast-icon">${icon}</span>
+                <span class="toast-message">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Show alert
+        function showAlert(message, type = 'error') {
+            const alertContainer = document.getElementById('alert-container');
+            const icon = type === 'error' ? 'exclamation-circle' : 'check-circle';
+            
+            alertContainer.innerHTML = `
+                <div class="alert alert-${type}">
+                    <i class="fas fa-${icon}"></i>
+                    ${message}
+                </div>
+            `;
+        }
+
+        // Clear alerts
+        function clearAlerts() {
+            document.getElementById('alert-container').innerHTML = '';
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            clearAlerts();
+            
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = loginBtn.querySelector('span');
+            const originalText = btnText.textContent;
+            
+            // Disable button and show loading
+            loginBtn.disabled = true;
+            btnText.textContent = 'Iniciando sesión...';
+            
+            try {
+                const formData = {
+                    username_email: document.getElementById('username_email').value,
+                    password: document.getElementById('password').value,
+                    remember: document.getElementById('remember').checked
+                };
+                
+                const response = await ApiService.login(formData);
+                
+                if (response.success) {
+                    showToast('¡Inicio de sesión exitoso!', 'success');
+                    
+                    // Store user data
+                    localStorage.setItem('user', JSON.stringify(response.data.user));
+                    localStorage.setItem('ink-sound-theme', response.data.user.theme_preference || 'dark');
+                    
+                    // Redirect after short delay
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(response.message, 'error');
+                    loginBtn.disabled = false;
+                    btnText.textContent = originalText;
+                }
+                
+            } catch (error) {
+                showAlert(error.message || 'Error al iniciar sesión', 'error');
+                loginBtn.disabled = false;
+                btnText.textContent = originalText;
+            }
+        });
+
+        // Auto-login if demo user clicked
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if already logged in
+            const user = localStorage.getItem('user');
+            if (user) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
