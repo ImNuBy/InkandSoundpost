@@ -1,9 +1,17 @@
 <?php
+
 /**
  * ========================================
  * INK & SOUND - DATABASE CONFIGURATION
  * ========================================
  */
+
+// Iniciar sesión SOLO si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// ... resto del código existente
 
 // Configuración de la base de datos
 define('DB_HOST', 'localhost');
